@@ -1,0 +1,2 @@
+class ControllerGame:
+    pass
