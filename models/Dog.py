@@ -11,4 +11,3 @@ class Dog:
     animation_state: EnumDogAnimState = EnumDogAnimState.IDLE
     animation_duration: float = 0
     animation_start_time: float = 0
-    
