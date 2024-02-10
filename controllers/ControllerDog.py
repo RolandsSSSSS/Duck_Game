@@ -9,7 +9,6 @@ class ControllerDog:
     def __init__(self, dog: Dog):
         self.dog: Dog = dog
         self.component_dog = ComponentDog()
-        self.is_jumping = True
 
     def set_dog_start(self):
         self.dog.x_position = 0

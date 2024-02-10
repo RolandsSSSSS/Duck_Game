@@ -17,10 +17,11 @@ class ComponentDog(Sprite):
 
     def load_sneak_sprites(self):
         sneak_sprites = []
+        color_key = self.dog_sprites.get_at((0, 0))
         for x, y in [(0, 9), (56, 9), (112, 9), (168, 9)]:
             sneak_sprite = self.get_frame(x, y, 1)
             sneak_sprite = pygame.transform.scale(sneak_sprite, (self.sprite_width * 3, self.sprite_height * 3))
-            sneak_sprite.set_colorkey((99, 173, 255))
+            sneak_sprite.set_colorkey(color_key)
             sneak_sprites.append(sneak_sprite)
         return sneak_sprites
 
