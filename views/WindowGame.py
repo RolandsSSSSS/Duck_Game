@@ -3,6 +3,7 @@ from pygame.locals import QUIT, KEYDOWN, K_ESCAPE, MOUSEBUTTONDOWN
 
 from controllers.ControllerDog import ControllerDog
 from models.Dog import Dog
+from models.enums.EnumDogAnimState import EnumDogAnimState
 from views.components.Background import Background
 
 
@@ -20,7 +21,7 @@ class WindowGame:
 
     def run(self):
         running = True
-        self.controller_dog.move_to_start_position(self.screen_height)
+        self.controller_dog.set_dog_start()
 
         while running:
             self.clock.tick(60)
@@ -35,13 +36,15 @@ class WindowGame:
                     print("Click")
 
             print("Dog cords:", self.dog.x_position, self.dog.y_position)
-
-            self.controller_dog.sneak(551)
-            if self.dog.x_position > 550:
+            if self.dog.animation_state == EnumDogAnimState.SNEAK:
+                self.controller_dog.sneak()
+            elif self.dog.animation_state == EnumDogAnimState.JUMP:
                 self.controller_dog.jump()
 
             self.background_sprite.set_sprite_area(0, 0, 256, 240)
 
             self.background_sprite.draw(self.screen)
-            self.controller_dog.draw(self.screen)
+            if not self.dog.under_cover:
+                self.controller_dog.draw(self.screen)
+                self.controller_dog.update()
             pygame.display.flip()
