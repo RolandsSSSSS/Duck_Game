@@ -41,6 +41,8 @@ class ComponentDuck(Sprite):
         elif duck_state == EnumDuckAnimState.HIT:
             screen.blit(self.hit_sprites_black[0], (x, y))
         elif duck_state == EnumDuckAnimState.FALL:
+            if self.current_frame_index >= 1:
+                self.current_frame_index = 0
             screen.blit(self.fall_sprites_black[self.current_frame_index], (x, y))
 
     def update(self, duck_state: EnumDuckAnimState):

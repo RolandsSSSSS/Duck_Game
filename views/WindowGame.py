@@ -35,6 +35,8 @@ class WindowGame:
         self.controller_duck.set_duck_start(self.screen_width)
         self.controller_game.set_game_start()
 
+        font = pygame.font.SysFont(None, 40)
+
         while running:
             self.clock.tick(60)
             self.background_sprite.set_sprite_area(0, 0, 256, 240)
@@ -42,6 +44,10 @@ class WindowGame:
 
             if self.dog.animation_state == EnumDogAnimState.IDLE:
                 round_start = False
+
+            # for now added soo ducks respawns
+            if self.duck.animation_state == EnumDuckAnimState.IDLE:
+                self.controller_duck.set_duck_start(self.screen_width)
             
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -60,7 +66,7 @@ class WindowGame:
                         else:
                             self.controller_game.missed_shot()
                         # print("Mouse position:", mouse_pos)
-                        print(f"Points: {self.game.points}, Bullets: {self.game.bullets_left}, Ducks shot: {self.game.ducks_shot}")
+
             if round_start:
                 # print("Dog cords:", self.dog.x_position, self.dog.y_position)
                 if self.dog.animation_state == EnumDogAnimState.SNEAK:
@@ -76,4 +82,13 @@ class WindowGame:
                     self.controller_duck.draw(self.screen)
                     self.controller_duck.fly(self.screen_width)
                     self.controller_duck.update()
+
+                # for now added so it shows points, bullets, ducks shot on screen
+                points = font.render(f"Points: {self.game.points}", True, (255, 255, 255))
+                bullets_left = font.render(f"Bullets left: {self.game.bullets_left}", True, (255, 255, 255))
+                ducks_shot = font.render(f"Ducks shot: {self.game.ducks_shot}", True, (255, 255, 255))
+
+                self.screen.blit(points, (10, 10))
+                self.screen.blit(bullets_left, (10, 35))
+                self.screen.blit(ducks_shot, (10, 60))
             pygame.display.flip()
