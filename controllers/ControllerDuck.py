@@ -14,13 +14,13 @@ class ControllerDuck:
         self.duck: Duck = duck
         self.component_duck = ComponentDuck()
 
-    def set_duck_start(self, screen_width):
+    def set_duck_start(self, screen_width, round_num):
         self.duck.x_position = randint(0, screen_width)
         self.duck.y_position = 350
-        self.duck.speed = 10
+        self.duck.speed = 4 + 2 * (round_num - 1)
         self.duck.duck_type = choice(list(EnumDuckType))
         self.duck.animation_state = choice([EnumDuckAnimState.FLY_LEFT, EnumDuckAnimState.FLY_RIGHT])
-        self.duck.points = 500
+        self.duck.points = 500 + 500 * (round_num - 1)
 
     def hit(self, mouse_pos):
         if self.duck_hitbox is not None:

@@ -13,3 +13,6 @@ class Game:
     bullets_left: int = 0
     ducks_shot: int = 0
     points: int = 0
+    round_start: bool = None
+    screen_width = 1280
+    screen_height = 720
