@@ -9,7 +9,7 @@ class Duck:
     x_position: int = 0
     y_position: int = 0
     speed: int = 0
-    type: EnumDuckType = EnumDuckType.RED
+    type: EnumDuckType = EnumDuckType.BLACK
     points: int = 0
     animation_state: EnumDuckAnimState = EnumDuckAnimState.IDLE
     animation_duration: float = 0

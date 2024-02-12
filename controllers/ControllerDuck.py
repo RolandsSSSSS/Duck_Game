@@ -18,7 +18,7 @@ class ControllerDuck:
         self.duck.x_position = randint(0, screen_width)
         self.duck.y_position = 350
         self.duck.speed = 4 + 2 * (round_num - 1)
-        self.duck.duck_type = choice(list(EnumDuckType))
+        self.duck.type = choice(list(EnumDuckType))
         self.duck.animation_state = choice([EnumDuckAnimState.FLY_LEFT, EnumDuckAnimState.FLY_RIGHT])
         self.duck.points = 500 + 500 * (round_num - 1)
 
@@ -50,7 +50,8 @@ class ControllerDuck:
 
     def draw(self, screen):
         if self.duck.animation_state != EnumDuckAnimState.IDLE:
-            self.component_duck.draw(screen, self.duck.x_position, self.duck.y_position, self.duck.animation_state)
+            self.component_duck.draw(screen, self.duck.x_position, self.duck.y_position, self.duck.animation_state,
+                                     self.duck.type)
 
     def update(self):
         self.component_duck.update(self.duck.animation_state)
