@@ -84,3 +84,7 @@ fabric.properties
 
 __pycache__/
 
+build/
+dist/
+Duck_Hunt.spec
+points.txt

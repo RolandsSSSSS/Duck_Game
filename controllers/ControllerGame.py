@@ -24,4 +24,7 @@ class ControllerGame:
         self.game.bullets_left -= 1
         if self.game.bullets_left <= 0:
             self.game.state = EnumGameState.GAME_OVER
+            with open("points.txt", "w") as file:
+                file.write(f"Points: {self.game.points}\n")
+                file.write(f"Ducks shot: {self.game.ducks_shot}\n")
             pygame.quit()

@@ -17,7 +17,7 @@ class ControllerDuck:
     def set_duck_start(self, screen_width):
         self.duck.x_position = randint(0, screen_width)
         self.duck.y_position = 350
-        self.duck.speed = 4
+        self.duck.speed = 10
         self.duck.duck_type = choice(list(EnumDuckType))
         self.duck.animation_state = choice([EnumDuckAnimState.FLY_LEFT, EnumDuckAnimState.FLY_RIGHT])
         self.duck.points = 500
